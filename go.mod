@@ -1,4 +1,4 @@
-module github.com/testing/sre-test-1
+module github.com/tfpmotta/sre-1
 
 go 1.13
 
