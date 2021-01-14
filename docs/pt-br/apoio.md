@@ -1,15 +1,16 @@
 
 # Doc de Apoio
 
-- Configurações Docker
+## Configurações Docker
 
-	- Ajustes Dockerfile
+- Ajustes Dockerfile
+
 		Inclusão de variavel para github privado [ ENV GOPRIVATE=github.com/tfpmotta ]
 		Execução de git config utilizando **access tokens**
 		apt-get update e install de pacotes para troubleshooting e metricas
 		EXPOSE para as portas 8080 9090
 		
-	- Build 
+ - Build 
 	
 		$ docker build -t sre-1:v1.2 .
 		Sending build context to Docker daemon  332.3kB
@@ -31,7 +32,7 @@
 		 ---> 672268f50de3
 		Successfully built 672268f50de3
 
-	- Start Container
+ - Start Container
 
 		$ docker container run -p 8080:8080 -p 9090:9090 -d sre-1:v1.2
 		f5bfa289737e1e6e1fcd83f33297dc70b63e1465241350981a8ac936a12fe01d
