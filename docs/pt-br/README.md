@@ -45,9 +45,9 @@ Crie um repositório privado na sua conta no GitHub e adicione os usuários que 
 	Comando utilizado - [ $ find ./* -type f  ! -iname '*readme*' -exec grep -l 'testing/sre-test-1' {} \; -exec sed 's/testing\/sre-test-1/tfpmotta\/sre-1/' {} \; ]
 
 - [X] Faça o commit e push da alteração para seu repositório.
-	[$ git add .
-	$ git commit -m "replace strings"
-	$ git push]
+	[ $ git add .
+	  $ git commit -m "replace strings"
+	  $ git push ]
 
 ## To fix
 
@@ -69,10 +69,10 @@ Crie um repositório privado na sua conta no GitHub e adicione os usuários que 
 ## To do
 
 - [X] Realizar testes de performance na geração de números randômicos.
-	- Criado script [scripts/performance.sh] teste de performance utilizando ApacheBench
+	- Criado script [performance.sh] teste de performance utilizando ApacheBench
 
 - [X] Trazer relatórios sobre estatísticas e métricas dos testes de performance.
-	- O script [scripts/performance.sh] está salvado relatório gerado pelo ApacheBench em [scripts/logs/]
+	- O script [performance.sh] está salvado relatório gerado pelo ApacheBench em [performance/logs/]
 	
 - [ ] Diminuir tempo de geração de número randômico.
 - [ ] Criar documentação para outros colaboradores contribuírem com o projeto.

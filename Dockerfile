@@ -20,3 +20,4 @@ RUN cd cmd && go build -o /bin/cmd
 EXPOSE 8080 9090
 
 ENTRYPOINT ["/bin/cmd"]
+

@@ -4,13 +4,13 @@
 ###  Script para realizar teste de performance utilizando ApacheBench  ###
 ##########################################################################
 
-DIR="/src/scripts"
+DIR="/src/performance"
 DIR_LOG="$DIR/logs"
 
 if [ -e "$DIR_LOG" ];then echo "ok";else mkdir $DIR_LOG;fi
 
-## Arquivo de log ex: performance-2101140130 (Ano com dois digitos, mês, dia, hora e minuto)
-LOG=`echo performance-$(date '+%y%m%d%H%M%S')`
+## Arquivo de log ex: performance-210114013002.txt (Ano com dois digitos, mês, dia, hora, minuto, segundo)
+LOG=`echo performance-$(date '+%y%m%d%H%M%S').txt`
 
 echo "\nTeste de Performance /get-random-number \n`date`\n" > $DIR_LOG/$LOG
 
