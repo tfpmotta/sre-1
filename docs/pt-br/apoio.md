@@ -5,10 +5,10 @@
 
 - Ajustes Dockerfile
 
-		Inclusão de variavel para github privado [ ENV GOPRIVATE=github.com/tfpmotta ]
-		Execução de git config utilizando **access tokens**
-		apt-get update e install de pacotes para troubleshooting e metricas
-		EXPOSE para as portas 8080 9090
+		- Inclusão de variavel para github privado [ ENV GOPRIVATE=github.com/tfpmotta ]
+		- Execução de git config utilizando **access tokens**
+		- apt-get update e install de pacotes para troubleshooting e metricas
+		- EXPOSE para as portas 8080 9090
 		
  - Build 
 	
