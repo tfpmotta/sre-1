@@ -8,8 +8,8 @@ import (
 	"syscall"
 
 	"github.com/prometheus/client_golang/prometheus/promhttp"
-	_ "github.com/tfpmotta/sre-1/cmd/get-random-number/register"
 
+	_ "github.com/tfpmotta/sre-1/cmd/get-random-number/register"
 	"github.com/tfpmotta/sre-1/internal/config"
 	"github.com/tfpmotta/sre-1/internal/router"
 )

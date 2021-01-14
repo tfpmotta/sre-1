@@ -34,22 +34,46 @@ Temos uma aplicação em **Golang** nesse repositório e uma declaração de **w
 
 Crie um repositório privado na sua conta no GitHub e adicione os usuários que informamos. Nesse repositório faça o push para a branch **main** do conteúdo desse `.zip` que te enviamos. As tarefas abaixo devem ser feitas nesse repositório que você criou.
 
+- Comandos utilizados
+	$ git remote add origin https://github.com/tfpmotta/sre-1.git
+	$ git branch -M main
+	$ git push -u origin main
+
 ## Para configurar seu repositório
 
-- [ ] Realize a substituição de todas as strings `testing/sre-test-1` por `SEU_USUARIO_GIT/NOME_DO_SEU_REPOSITÓRIO` criando um script para fazer essa tarefa (na linguagem de sua escolha).
-- [ ] Faça o commit e push da alteração para seu repositório.
+- [X] Realize a substituição de todas as strings `testing/sre-test-1` por `SEU_USUARIO_GIT/NOME_DO_SEU_REPOSITÓRIO` criando um script para fazer essa tarefa (na linguagem de sua escolha).
+	Comando utilizado - [ $ find ./* -type f  ! -iname '*readme*' -exec grep -l 'testing/sre-test-1' {} \; -exec sed 's/testing\/sre-test-1/tfpmotta\/sre-1/' {} \; ]
+
+- [X] Faça o commit e push da alteração para seu repositório.
+	[$ git add .
+	$ git commit -m "replace strings"
+	$ git push]
 
 ## To fix
 
-- [ ] Aplicação não está realizando build da imagem Docker.
+- [X] Aplicação não está realizando build da imagem Docker.
+	Ajustes Dockerfile
+		- Inclusão de variavel para github privado [ ENV GOPRIVATE=github.com/tfpmotta ]
+		- Execução de git config utilizando **access tokens**
+		- apt-get update e install de pacotes para troubleshooting e metricas
+		- EXPOSE para as portas 8080 9090
+		
+	Build ok - [ $ docker build -t sre-1 . ]
+	Start Container ok - [ $ docker container run -p 8080:8080 -p 9090:9090 -d sre-1:latest ]
+
 - [ ] Não temos logs no pipeline ou alertas indicando sucesso do teste funcional.
+
 - [ ] Existe um step no pipeline em que realizamos um teste funcional realizando o request para http://localhost:8080/random-number e validamos a resposta, verificar se o teste feito aqui realmente garante que o endpoint está respondendo devidamente.
 - [ ] Criar o mesmo teste funcional para a rota `/metrics` da porta **9090**.
 
 ## To do
 
-- [ ] Realizar testes de performance na geração de números randômicos.
-- [ ] Trazer relatórios sobre estatísticas e métricas dos testes de performance.
+- [X] Realizar testes de performance na geração de números randômicos.
+	- Criado script [scripts/performance.sh] teste de performance utilizando ApacheBench
+
+- [X] Trazer relatórios sobre estatísticas e métricas dos testes de performance.
+	- O script [scripts/performance.sh] está salvado relatório gerado pelo ApacheBench em [scripts/logs/]
+	
 - [ ] Diminuir tempo de geração de número randômico.
 - [ ] Criar documentação para outros colaboradores contribuírem com o projeto.
 - [ ] Implementar métricas sobre o serviço http que responde na rota `/get-random-number` (dicas https://www.robustperception.io/prometheus-middleware-for-gorilla-mux e para uma implementação mais simples, utilize o arquivo [internal/router/router.go](../../internal/router/router.go)) expondo através da rota `/metrics` as métricas adicionais.
