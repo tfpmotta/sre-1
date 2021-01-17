@@ -138,13 +138,19 @@
 - Inclusão de nova API (randomnumberapi.com) em [cmd/get-random-number/function.go] com o objetivo de reduzir o tempo na geração do número randômico. (v1.4)
 
 	- A nova API tem um retorno json, com isso foi necessario realizar replace dos caracteres "[", "]", "," e " ", com isso foi necessário incluior os módulos "strings" e "fmt".
-	Apesar da quantidade de replace, o mesmo não impactou a performance da aplicação, que reduziu seu tempo de resposta em aproximadamente 80%.
+	
+		Apesar da quantidade de replace, a performance da aplicação não foi afetada. Ocorreu uma redução de tempo de resposta em aproximadamente 80%.
 		
 		sourceBody1 := strings.Replace(string(sourceBody), "[", "", -1)
+		
 		sourceBody2 := strings.Replace(string(sourceBody1), "]", "", -1)
+		
 		sourceBody3 := strings.Replace(string(sourceBody2), ",", "", -1)
+		
 		sourceBody4 := strings.Replace(string(sourceBody3), " ", "", -1)
+		
 		fmt.Println(sourceBody4)
+		
 
 	- Comparação de entre as versões
 	
@@ -155,19 +161,25 @@
 		{"random_number":"82144522620343136134152281181935145115294273912472327301693725484638417263245403491143102243350"}
 
 		real    0m1.038s
+		
 		user    0m0.016s
+		
 		sys     0m0.031s
 		
 		tuvok@DESKTOP-KTF5JML:~$ docker container stop b41bf9ec10e7 
+		
 		b41bf9ec10e7
 		
 		tuvok@DESKTOP-KTF5JML:~$ docker container start 67c8b630b3d0
+		
 		67c8b630b3d0
 
 		tuvok@DESKTOP-KTF5JML:~$ time curl "http://localhost:8080/get-random-number"
 		{"random_number":"23312271726464049463511113032916224947452935164018229483125173226492417102743347513832222117322121"}
 
 		real    0m0.242s
+		
 		user    0m0.000s
+		
 		sys     0m0.047s
 
