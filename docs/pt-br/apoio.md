@@ -118,3 +118,15 @@
 			  98%    104
 			  99%    107
 			 100%    207 (longest request)
+
+- Inclusão de log na pipeline
+	- Adicionas linhas na função main no arquivo [cmd/main.go], arquivo de log sendo gerado na raiz do repositório.
+	
+			file, err := os.OpenFile("info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+
+			if err != nil {
+				log.Fatalln(err)
+			}
+
+			defer file.Close()
+			log.SetOutput(file)

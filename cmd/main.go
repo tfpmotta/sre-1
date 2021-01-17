@@ -33,6 +33,15 @@ func init() {
 }
 
 func main() {
+	
+	file, err := os.OpenFile("info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
+
+    if err != nil {
+      log.Fatalln(err)
+	}
+
+    defer file.Close()
+	log.SetOutput(file)
 
 	sigs := make(chan os.Signal, 1)
 	done := make(chan bool, 1)
@@ -48,7 +57,7 @@ func main() {
 		log.Printf("service server started on: http://%s\n", address)
 		if err := http.ListenAndServe(address, serviceServer); err != http.ErrServerClosed {
 			log.Fatalln(err)
-		}
+		}		
 	}()
 
 	metricsServer := http.NewServeMux()
