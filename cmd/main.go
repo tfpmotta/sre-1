@@ -33,14 +33,14 @@ func init() {
 }
 
 func main() {
-	
+
 	file, err := os.OpenFile("info.log", os.O_CREATE|os.O_APPEND|os.O_WRONLY, 0644)
 
-    if err != nil {
-      log.Fatalln(err)
+	if err != nil {
+		log.Fatalln(err)
 	}
 
-    defer file.Close()
+	defer file.Close()
 	log.SetOutput(file)
 
 	sigs := make(chan os.Signal, 1)

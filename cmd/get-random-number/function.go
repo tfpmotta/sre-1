@@ -6,10 +6,12 @@ import (
 	"log"
 	"net/http"
 	"regexp"
+	"strings"
+	"fmt"
 )
 
 const (
-	RandomNumberGetSource = "https://www.random.org/sequences/?min=1&max=52&col=1&format=plain&rnd=new"
+	RandomNumberGetSource = "http://www.randomnumberapi.com/api/v1.0/random?min=1&max=52&count=52"
 )
 
 var (
@@ -39,8 +41,14 @@ func GetRandomNumber(response http.ResponseWriter, request *http.Request) {
 		return
 	}
 
+	sourceBody1 := strings.Replace(string(sourceBody), "[", "", -1)
+	sourceBody2 := strings.Replace(string(sourceBody1), "]", "", -1)
+	sourceBody3 := strings.Replace(string(sourceBody2), ",", "", -1)
+	sourceBody4 := strings.Replace(string(sourceBody3), " ", "", -1)
+	fmt.Println(sourceBody4)
+
 	out := &RandomNumberResponse{
-		RandomNumber: RandomNumberRegexMatch.ReplaceAllString(string(sourceBody), ""),
+		RandomNumber: RandomNumberRegexMatch.ReplaceAllString(string(sourceBody4), ""),
 	}
 
 	response.Header().Set("Content-Type", "application/json")

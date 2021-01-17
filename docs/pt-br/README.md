@@ -61,9 +61,10 @@ Crie um repositório privado na sua conta no GitHub e adicione os usuários que 
 	Build ok - [ $ docker build -t sre-1 . ]
 	Start Container ok - [ $ docker container run -p 8080:8080 -p 9090:9090 -d sre-1:latest ]
 
-- [ ] Não temos logs no pipeline ou alertas indicando sucesso do teste funcional.
+- [X] Não temos logs no pipeline ou alertas indicando sucesso do teste funcional.
 
 - [ ] Existe um step no pipeline em que realizamos um teste funcional realizando o request para http://localhost:8080/random-number e validamos a resposta, verificar se o teste feito aqui realmente garante que o endpoint está respondendo devidamente.
+
 - [ ] Criar o mesmo teste funcional para a rota `/metrics` da porta **9090**.
 
 ## To do
@@ -74,7 +75,12 @@ Crie um repositório privado na sua conta no GitHub e adicione os usuários que 
 - [X] Trazer relatórios sobre estatísticas e métricas dos testes de performance.
 	- O script [performance.sh] está salvado relatório gerado pelo ApacheBench em [performance/logs/]
 	
-- [ ] Diminuir tempo de geração de número randômico.
-- [ ] Criar documentação para outros colaboradores contribuírem com o projeto.
+- [X] Diminuir tempo de geração de número randômico.
+	- Incluida nova API. Api antiga retorna em media 1050ms, nova API retorna em media 240ms.
+
+- [X] Criar documentação para outros colaboradores contribuírem com o projeto.
+	- Criado arquivo docs/pt-br/apoio.md
+
 - [ ] Implementar métricas sobre o serviço http que responde na rota `/get-random-number` (dicas https://www.robustperception.io/prometheus-middleware-for-gorilla-mux e para uma implementação mais simples, utilize o arquivo [internal/router/router.go](../../internal/router/router.go)) expondo através da rota `/metrics` as métricas adicionais.
+
 - [ ] Reduzir tempo de execução do workflow (GitHub Action).
