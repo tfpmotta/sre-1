@@ -7,7 +7,7 @@
 DIR="/src/performance"
 DIR_LOG="$DIR/logs"
 
-if [ -e "$DIR_LOG" ];then echo "ok" > /dev/null ;else mkdir $DIR_LOG;fi
+if [ -e "$DIR_LOG" ];then echo "ok" > /dev/null ;else mkdir -p $DIR_LOG;fi
 
 ## Arquivo de log ex: performance-210114013002.txt (Ano com dois digitos, mês, dia, hora, minuto, segundo)
 LOG=`echo performance-$(date '+%y%m%d%H%M%S').txt`
